@@ -1,8 +1,8 @@
 import Blog from "../model/blog";
 
-async function creeateBlog(req, res) {
+ function creeateBlog(req, res) {
   const blog = new Blog.blogSchema(req.body);
-  await blog.save((err, result) => {
+   blog.save((err, result) => {
     if (err) {
       return res.status(400).json({
         status: "fail",
@@ -17,8 +17,8 @@ async function creeateBlog(req, res) {
   });
 }
 
-async function getBlog(req, res) {
-  await Blog.blogSchema.find((err, result) => {
+ function getBlog(req, res) {
+   Blog.blogSchema.find((err, result) => {
     if (err) {
       return res.status(400).json({
         status: "fail",
@@ -32,9 +32,9 @@ async function getBlog(req, res) {
     }
   });
 }
-async function updateBlog(req, res) {
+ function updateBlog(req, res) {
   console.log(req.params.id);
-  await Blog.blogSchema.findByIdAndUpdate(
+   Blog.blogSchema.findByIdAndUpdate(
     req.params.id,
     req.body,
     (err, result) => {
@@ -52,9 +52,9 @@ async function updateBlog(req, res) {
     }
   );
 }
-async function deleteBlog(req, res) {
+ function deleteBlog(req, res) {
   console.log(req.params.id);
-  await Blog.blogSchema.findByIdAndRemove(req.params.id, (err, result)=> {
+   Blog.blogSchema.findByIdAndRemove(req.params.id, (err, result)=> {
     if (err) {
       return res.status(400).json({
         status: "fail",
